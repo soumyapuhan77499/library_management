@@ -57,7 +57,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div class="card sales-card shadow">
                             <div class="row align-items-center">
-                                <div class="col-8 text-white ps-4 pt-4 pe-3 pb-4" style="background: linear-gradient(90deg, #b0b5ed, #148ff4); border-radius: 15px 0 0 15px;height: 110px">
+                                <div class="col-8 text-white ps-4 pt-4 pe-3 pb-4" style="background: linear-gradient(90deg, #e459e1, #a8eb35); border-radius: 15px 0 0 15px;height: 110px">
                                     <h5 class="fw-bold">Book Tracking</h5>
 
                                     <button class="btn premium-btn" id="trackingButton">Start Tracking</button>
