@@ -1,82 +1,128 @@
 @extends('layouts.app')
 
 @section('styles')
+
+<style>
+  /* Card Styling */
+.card.sales-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.sales-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Styling */
+.premium-btn {
+    background: linear-gradient(90deg, #ff8a00, #e0558a);
+    border: none;
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(255, 138, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.premium-btn:hover {
+    background: linear-gradient(90deg, #e0558a, #ff8a00);
+    box-shadow: 0 6px 16px rgba(255, 138, 0, 0.6);
+    transform: scale(1.05);
+}
+
+.premium-btn:active {
+    transform: scale(0.98);
+}
+
+/* Image Styling */
+.card img {
+    width: 100%;
+    max-width: 70px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+</style>
 @endsection
 
 @section('content')
     <div class="row mt-4">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-4 col-xs-4">
-                    <div class="card sales-card">
-                        <div class="row" >
-                            <div class="col-8" id="card1"  style="background: linear-gradient(90deg, #b0b5ed, #148ff4);">
-                                <div class="ps-4 pt-4 pe-3 pb-4">
-                                    <div class="">
-                                    </div>
-                                    <h6 class="mb-2 tx-12" style="color: white;font-size: 25px">Entry</h6>
-                                    <div class="pb-0 mt-0">
-                                        <div class="">
-                                            <p class="mb-0 fs-14 text-muted">
-                                                <i class="fas fa-arrow-circle-up mx-2 text-success"></i>
-                                                <span style="font-size: 17px;" id="singha-up"
-                                                    class="text-white">200</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <img src="{{ asset('assets/img/library/entry.png') }}"  alt="Library Image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xl-4 col-lg-4 col-md-4 col-xs-4">
-                    <div class="card sales-card">
-                        <div class="row">
-                            <div class="col-8" id="card4" style="background: linear-gradient(90deg, #ed6ddc, #23c1bc);">
-                                <div class="ps-4 pt-4 pe-3 pb-4">
-                                    <div class="">
-                                        <h6 class="mb-2 tx-12" style="color: white;font-size: 25px">Exit</h6>
-                                    </div>
-                                    <div class="pb-0 mt-0">
-                                        <div class="">
-                                           
-                                            <p class="mb-0 fs-14 text-muted"><i
-                                                    class="fas fa-arrow-circle-down mx-2 text-danger"></i> <span
-                                                    style="font-size: 17px" id="singha-down3" class="text-white">150</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <img src="{{ asset('assets/img/library/exit-door.png') }}"  alt="Library Image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                 <!-- Book Tracking Card -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card sales-card shadow">
+                            <div class="row align-items-center">
+                                <div class="col-8 text-white ps-4 pt-4 pe-3 pb-4" style="background: linear-gradient(90deg, #b0b5ed, #148ff4); border-radius: 15px 0 0 15px;height: 110px">
+                                    <h5 class="fw-bold">Book Tracking</h5>
 
-                <div class="col-xl-4 col-lg-4 col-md-4 col-xs-4">
-                    <div class="card sales-card">
-                        <div class="row">
-                            <div class="col-8" id="card4" style="background: linear-gradient(90deg, #f9c314, #f64d30);">
-                                <div class="ps-4 pt-4 pe-3 pb-4">
-                                    <h6 class="mb-2 tx-12" style="color: white;font-size: 25px">Available</h6>
+                                    <button class="btn premium-btn" id="trackingButton">Start Tracking</button>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <img src="{{ asset('assets/img/library/track.png') }}"  alt="Library Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Entry Card -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card sales-card shadow">
+                            <div class="row align-items-center">
+                                <div class="col-8 ps-4 pt-4 pe-3 pb-4 text-white" style="background: linear-gradient(90deg, #b0b5ed, #148ff4); border-radius: 15px 0 0 15px;">
+                                    <h6 class="fw-bold mb-2" style="font-size: 25px;">Entry</h6>
                                     <p class="mb-0 fs-14 text-muted">
-                                        <i class="fas fa-arrow-circle-down mx-2 text-danger"></i> 
-                                        <span style="font-size: 17px" id="available-count" class="text-white"></span>
+                                        <i class="fas fa-arrow-circle-up mx-2 text-success"></i>
+                                        <span style="font-size: 17px;" id="singha-up" class="text-white">200</span>
                                     </p>
                                 </div>
-                            </div>
-                            <div class="col-4">
-                                <img src="{{ asset('assets/img/library/availability.png') }}" alt="Library Image">
+                                <div class="col-4 text-center">
+                                    <img src="{{ asset('assets/img/library/entry.png') }}"  alt="Library Image">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                
+                    <!-- Exit Card -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card sales-card shadow">
+                            <div class="row align-items-center">
+                                <div class="col-8 ps-4 pt-4 pe-3 pb-4 text-white" style="background: linear-gradient(90deg, #ed6ddc, #23c1bc); border-radius: 15px 0 0 15px;">
+                                    <h6 class="fw-bold mb-2" style="font-size: 25px;">Exit</h6>
+                                    <p class="mb-0 fs-14 text-muted">
+                                        <i class="fas fa-arrow-circle-down mx-2 text-danger"></i>
+                                        <span style="font-size: 17px;" id="singha-down3" class="text-white">150</span>
+                                    </p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <img src="{{ asset('assets/img/library/exit-door.png') }}" alt="Library Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <!-- Available Card -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <div class="card sales-card shadow">
+                            <div class="row align-items-center">
+                                <div class="col-8 ps-4 pt-4 pe-3 pb-4 text-white" style="background: linear-gradient(90deg, #f9c314, #f64d30); border-radius: 15px 0 0 15px;">
+                                    <h6 class="fw-bold mb-2" style="font-size: 25px;">Available</h6>
+                                    <p class="mb-0 fs-14 text-muted">
+                                        <i class="fas fa-arrow-circle-down mx-2 text-danger"></i>
+                                        <span style="font-size: 17px;" id="available-count" class="text-white">120</span>
+                                    </p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <img src="{{ asset('assets/img/library/availability.png') }}" alt="Library Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
             </div>
         </div>
 
@@ -323,7 +369,8 @@
 @section('scripts')
 <script>
     // List of book names
-    const books = [
+ // List of book names
+const books = [
     "The Great Story",
     "Moby Dick",
     "Pride and Prejudice",
@@ -336,6 +383,7 @@
     "The Iliad"
 ];
 
+// List of users
 const users = [
     "Sujit Parija",
     "Amlana Rout",
@@ -343,15 +391,19 @@ const users = [
     "Elina Ray",
     "Ayesha Parija",
     "Rojalini Dalai",
-    "Pravupad Sahoo",
+    "Pravupad Sahoo"
 ];
 
 // Reference to the "Missing Books" section
 const missingBooksList = document.querySelector(".latest-timeline-missing ul");
 
+// Reference to the "Start Tracking" button
+const trackingButton = document.getElementById("trackingButton");
+
+let trackingInterval = null; // To store the interval ID
+
 // Function to randomly steal a book
 function stealBook() {
-    // Randomly select a book and a user
     const randomBook = books[Math.floor(Math.random() * books.length)];
     const randomUser = users[Math.floor(Math.random() * users.length)];
     const date = new Date().toLocaleDateString();
@@ -361,16 +413,14 @@ function stealBook() {
     sirenSound.play();
 
     // Show SweetAlert popup
-    // Show SweetAlert popup
     Swal.fire({
         title: "🚨 Book Stolen!",
         html: `<strong>${randomBook}</strong> has been stolen by <strong>${randomUser}</strong>!`,
         icon: "warning",
         confirmButtonText: "OK"
     }).then(() => {
-        // Pause the siren sound when the user clicks OK
         sirenSound.pause();
-        sirenSound.currentTime = 0; // Reset the audio to the beginning
+        sirenSound.currentTime = 0;
     });
 
     // Add the stolen book to the "Missing Books" list
@@ -390,13 +440,27 @@ function stealBook() {
             </a>
         </li>
     `;
-
-    // Append the new book entry to the list
     missingBooksList.insertAdjacentHTML("beforeend", bookHTML);
 }
 
-// Trigger the stealBook function every 5 seconds
-setInterval(stealBook, 10000);
+// Function to start or stop tracking
+function toggleTracking() {
+    if (trackingInterval === null) {
+        // Start tracking
+        trackingInterval = setInterval(stealBook, 10000);
+        trackingButton.textContent = "Stop Tracking";
+        trackingButton.classList.replace("btn-primary", "btn-danger");
+    } else {
+        // Stop tracking
+        clearInterval(trackingInterval);
+        trackingInterval = null;
+        trackingButton.textContent = "Start Tracking";
+        trackingButton.classList.replace("btn-danger", "btn-primary");
+    }
+}
+
+// Attach the toggleTracking function to the button's click event
+trackingButton.addEventListener("click", toggleTracking);
 
 
 </script>
